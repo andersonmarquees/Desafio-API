@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+</head>
+<body>
+    <div id="root">
+    </div>
+    
+</body>
+
+<script>
+    const root = document.querySelector("#root")
+    
+    async function getApi() {
+        try {
+
+            const response = await fetch('http://localhost:3333')
+            const data = await response.json()
+            printApi(data)
+            
+        } catch (error) {
+            console.error(error)
+        }
+    }
+    getApi()
+    
+    function printApi(users) {
+
+        const root = document.querySelector('#root')
+        let output = ''
+        for(let user of users) {
+            output += `<li>${user.name}</li>`  
+        }
+        root.innerHTML = output
+    }
+    
+
+    
+</script>
+</html>
